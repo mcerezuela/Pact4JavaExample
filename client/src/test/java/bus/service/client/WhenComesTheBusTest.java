@@ -32,7 +32,7 @@ public class WhenComesTheBusTest {
         DslPart etaResults = new PactDslJsonBody()
                 .stringType("station","Hammersmith")
                 .stringType("nr","613")
-                .integerType("eta",4)
+                .stringType("eta","now")
                 .asBody();
 
         return builder
@@ -51,9 +51,9 @@ public class WhenComesTheBusTest {
     @PactVerification()
     public void doTest() {
         System.setProperty("pact.rootDir","../pacts");  // Change output dir for generated pact-files
-        Integer eta = new WhenComesTheBus(provider.getPort()).checkEta("Hammersmith", "613");
+        String eta = new WhenComesTheBus(provider.getPort()).checkEta("Hammersmith", "613");
         System.out.println("According to test eta="+eta);
-        assertTrue(eta >= 0);
+        assertTrue((eta.equals("now")||Integer.parseInt(eta)>=0));
     }
 
 }

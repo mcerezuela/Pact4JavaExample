@@ -18,7 +18,7 @@
                     "Content-Type": "application/json"
                 },
                 "body": {
-                    "eta": 4,
+                    "eta": "now",
                     "nr": "613",
                     "station": "Hammersmith"
                 },
@@ -43,7 +43,7 @@
                         "$.eta": {
                             "matchers": [
                                 {
-                                    "match": "integer"
+                                    "match": "type"
                                 }
                             ],
                             "combine": "AND"

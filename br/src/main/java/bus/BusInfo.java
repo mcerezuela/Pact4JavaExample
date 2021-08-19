@@ -3,10 +3,10 @@ package bus;
 public class BusInfo {
     String station;
     String nr;
-    Integer eta;
+    String eta;
 
 
-    public BusInfo(String station, String nr, Integer eta) {
+    public BusInfo(String station, String nr, String eta) {
         this.station=station;
         this.nr = nr;
         this.eta = eta;
@@ -20,11 +20,11 @@ public class BusInfo {
         this.nr = nr;
     }
 
-    public Integer getEta() {
+    public String getEta() {
         return eta;
     }
 
-    public void setEta(Integer eta) {
+    public void setEta(String eta) {
         this.eta = eta;
     }
 

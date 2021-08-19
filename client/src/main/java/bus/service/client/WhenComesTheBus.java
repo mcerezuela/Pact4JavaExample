@@ -22,11 +22,11 @@ public class WhenComesTheBus
     }
 
     public static void main( String[] args ) {
-        Integer eta = new WhenComesTheBus().checkEta("Hammersmith","613");
+        String eta = new WhenComesTheBus().checkEta("Hammersmith","613");
         System.out.println("eta="+eta);
     }
 
-    public Integer checkEta(String station, String nr) {
+    public String checkEta(String station, String nr) {
         try {
             String url=String.format("Http://localhost:%d/bus/%s/%s", port, station, nr);
             System.out.println("using url: "+url);
@@ -35,7 +35,7 @@ public class WhenComesTheBus
             System.out.println("json="+json);
             JSONObject jsonObject = new JSONObject(json);
             String eta = jsonObject.get("eta").toString();
-            return new Integer(eta);
+            return eta;
 
         }
         catch (Exception e) {

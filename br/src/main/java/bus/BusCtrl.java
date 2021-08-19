@@ -11,16 +11,18 @@ public class BusCtrl {
 
     @RequestMapping("/bus/{station}/{nr}")
     public BusInfo bus(@PathVariable String station, @PathVariable String nr) {
-        int eta = getEtaBasedOnGpsAndOtherAdcancedStuff();
+        String eta = getEtaBasedOnGpsAndOtherAdcancedStuff();
         BusInfo b = new BusInfo(station, nr, eta);
         return b;
     }
 
-    private int getEtaBasedOnGpsAndOtherAdcancedStuff() {
+    private String getEtaBasedOnGpsAndOtherAdcancedStuff() {
         Random rn = new Random();
-        int min = 1;
-        int max = 7;
-        return rn.nextInt(max - min + 1) + min;
+        int min = 0;
+        int max = 5;
+        int eta = rn.nextInt(max - min + 1) + min;
+        if(eta>0) return ""+eta;
+        return "now";
     }
 
 
